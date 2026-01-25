@@ -48,16 +48,14 @@ export default {
                     DEFAULT: "hsl(var(--card))",
                     foreground: "hsl(var(--card-foreground))",
                 },
-                "arctic-white": "#F0F9FF", // Very pale blue (Sky 50)
-                "ocean-blue": "#0c2642", // Deep crisp navy
-                "glacier-blue": "#38BDF8", // Bright ice blue
-                "soft-slate": "#94A3B8", // Cool slate
-                frost: "rgba(255, 255, 255, 0.8)",
+                "arctic-blue": "#e1f5fe",
+                "ice-blue": "#81d4fa",
+                "pixel-orange": "#ffb74d",
             },
             fontFamily: {
-                heading: ["Inter", "Montserrat", "sans-serif"],
-                body: ["Public Sans", "Outfit", "sans-serif"],
-                mono: ["JetBrains Mono", "monospace"],
+                pixel: ["'Press Start 2P'", "cursive"],
+                heading: ["'Fredoka'", "sans-serif"],
+                body: ["'Fredoka'", "sans-serif"],
             },
             borderRadius: {
                 lg: `var(--radius)`,
@@ -73,10 +71,15 @@ export default {
                     from: { height: "var(--radix-accordion-content-height)" },
                     to: { height: 0 },
                 },
+                "pulse-slow": {
+                    "0%, 100%": { opacity: 1 },
+                    "50%": { opacity: 0.8 },
+                }
             },
             animation: {
                 "accordion-down": "accordion-down 0.2s ease-out",
                 "accordion-up": "accordion-up 0.2s ease-out",
+                "pulse-slow": "pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
             },
         },
     },

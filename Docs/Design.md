@@ -1,64 +1,54 @@
-Design Document: Penguin Tracker (Northsea Inspired)
-1. Design Philosophy
-The goal is to create a high-trust, educational, and interactive platform. The design uses Atmospheric Minimalism—utilizing vast white space (representative of the Arctic/Antarctic), high-quality nature photography, and "frosted" UI elements to give a cold, clean, and modern feel.
+Design Document: Penguin but why (The Nihilist Edition)
 
-2. Visual Identity
-Color Palette
-Arctic White (#F9FAFB): Primary background color to maintain a clean, airy feel.
+## 1. Design Philosophy
+The goal is to create a delightful, nostalgic, yet deeply philosophical platform inspired by the **"Nihilist Penguin"** viral phenomenon (originally from Werner Herzog's *Encounters at the End of the World*). The design blends **"Cute Retro Minimalism"** with existential undertones. It tracks those who have chosen to depart from the colony and march into the vast, silent interior of the Antarctic. It celebrates walking one's own path, detachment, and the beautiful absurdity of existence.
 
-Deep Ocean Blue (#0A2540): Primary text and navigation color for high contrast.
+## 2. Visual Identity
 
-Glacier Blue (#A5D8FF): Accent color for buttons, active states, and tracking lines.
+### Color Palette
+*   **Primary (Indigo-600):** `#4f46e5` - Used for primary branding and headers.
+*   **Secondary (Rose-500):** `#f43f5e` - Used for urgency, health status (Help), and radar markers.
+*   **Accent (Amber-400):** `#fbbf24` - Used for call-to-action buttons ("LIVE" status).
+*   **Background (Blue-50):** `#eff6ff` - A soft, cold background to represent the arctic snow.
+*   **Foreground (Black):** `#000000` - Used for thick borders, shadows, and high-contrast text.
+*   **Arctic Blue:** `#dbeafe` - Used for card backgrounds and secondary containers.
 
-Soft Slate (#64748B): Secondary text for metadata and captions.
+### Typography
+*   **Headings & Accents:** `Pixelify Sans`. A pixelated font used for brand names, section labels, and "8-bit" badges to reinforce the retro vibe.
+*   **Body:** `Outfit`. A clean, rounded sans-serif that balances the pixelated elements with high readability.
+*   **Sizing Strategy:** Pixel fonts are kept small (8px-12px) for density, while body text uses standard readable scales (14px-18px).
 
-Translucent Frost (rgba(255, 255, 255, 0.7)): Used for glassmorphism effects on cards and overlays.
+### UI Style: Neo-Retro / Pixel-Brutalism
+*   **Borders:** Consistent `3px` or `4px` solid black borders on all interactive elements.
+*   **Shadows:** Hard, non-blurred shadows (`shadow-[5px_5px_0px_0px_rgba(0,0,0,1)]`) to create a pop-out "sticker" effect.
+*   **Roundedness:** Large rounded corners (`2rem` or `1.5rem`) to maintain the "cute" and "soft" feel despite the hard edges.
 
-Typography
-Headings: Inter or Montserrat (Bold/Semi-bold). Clean, geometric sans-serif to feel modern and scientific.
+## 3. Layout Structure
 
-Body: Public Sans or Outfit. Highly legible at small sizes for data points.
+### Navigation Bar
+*   **Floating Bar:** A glassmorphism container (`bg-white/70 backdrop-blur`) floating at the top of the screen.
+*   **Responsive Pill:** A central pill containing navigation links (Map, Wiki, Mission) that adapts to mobile by reducing padding.
+*   **Brand Icon:** A circular penguin avatar with a thick black border.
 
-Monospace (Optional): JetBrains Mono for GPS coordinates and ID tags to give a "technical" feel.
+### Hero Section
+*   **Visual Scene:** A central or split layout featuring the "Specimen" image inside a stylized, bordered container.
+*   **Floating Badges:** Interactive "sticker" labels like "99% CUTE" and "0% FLIGHT" that use micro-animations to float around the main visual.
+*   **Wavy Heading:** "Stay Cool With Penguins" with a custom-drawn underline to add personality.
 
-3. Layout Structure (Based on Header)
-Navigation Bar
-Left: Minimalist Logo (Simple penguin silhouette + "P-Track").
+## 4. Key Website Features
 
-Center: Navigation links (Map, Species, Conservation, About).
+### Antarctic Radar (Map)
+*   **Aesthetic:** A "tactical HUD" look with a pixel grid overlay and scanning sweep animations.
+*   **Markers:** Pulsing, bordered squares representing different penguin species (Adélie, Gentoo, King).
+*   **Controls:** Chunky `+` and `-` buttons for zoom, following the neo-brutalism shadow style.
 
-Right: Call to Action (CTA) button with a subtle shadow: "Live Tracking."
+### Specimen Tracking (Cards)
+*   **Visuals:** Square aspect-ratio images with zoom-on-hover effects.
+*   **Status Badges:** Color-coded pixel badges (HAPPY, CHILL, HELP) showing health.
+*   **Metadata:** Compact tags for location and species using Lucide-React icons for clarity.
 
-Hero Section (The "Dribbble" Look)
-The Focus: A high-resolution, full-width image of a penguin in its natural habitat.
-
-Text Overlay: Left-aligned bold heading (e.g., "Protecting the Gentoo Penguin") with a sub-header explaining the current mission.
-
-Interactive Card: A floating "Glassmorphism" card on the right side showing live stats (e.g., "Current Population," "Water Temp," "Active Tags").
-
-4. Key Website Features
-Live Tracking Map
-Style: A custom Mapbox or Leaflet theme using "Cold Grey" or "Dark Navy" tones.
-
-Markers: Small, pulsing Glacial Blue dots representing individual penguins.
-
-Sidebar: A list of "Featured Penguins" with names, distances traveled, and recent photos.
-
-Penguin Profile Cards
-Visuals: Each penguin gets a card with a "Frosted Glass" background.
-
-Data Points: Name, Species, Last Seen (Location), and "Health Status" (Green/Yellow/Red indicator).
-
-5. Technical Specifications
-Frontend Framework: React or Next.js for smooth transitions between tracking data.
-
-Animations: Use Framer Motion for subtle "drifting" animations (imitating ice floes) and smooth fades when switching between penguin profiles.
-
-Icons: Use Lucide-React for thin, clean iconography (e.g., wind icons, temperature icons, GPS pins).
-
-6. UI Elements & Components
-Buttons: Rounded corners (8px–12px). Use a subtle blur background for buttons placed over images.
-
-Imagery: Use images with cool color temperatures (blue/white/grey) to match the Northsea aesthetic.
-
-Grid: A 12-column grid with generous margins (80px+) to prevent the data from feeling cluttered.
+## 5. Technical Specifications
+*   **Frontend:** React + Vite with Tailwind CSS for utility-first styling.
+*   **Animations:** Framer Motion for spring-based interactions, floating loops, and entry reveals.
+*   **Icons:** Lucide-React for clean line art that contrasts with the chunky pixel elements.
+*   **Grid:** Standard container-based grid with responsive breakpoints (`sm`, `md`, `lg`) adjusting font sizes and spacing dynamically.

@@ -1,52 +1,80 @@
 
-import { } from "lucide-react";
+
 
 export const MapSection = () => {
     return (
-        <section id="map" className="py-20 bg-arctic-white">
+        <section id="map" className="py-16 bg-white/20">
             <div className="container px-6">
-                <div className="mb-12 text-center">
-                    <h2 className="text-3xl font-heading font-bold text-ocean-blue mb-4">Live Tracking Map</h2>
-                    <p className="text-soft-slate max-w-2xl mx-auto">
-                        Track movement patterns of tracked colonies in real-time. Data is updated every 4 hours via satellite uplink.
+                <div className="mb-10 text-center">
+                    <span className="font-pixel text-[8px] text-primary bg-black px-3 py-1.5 rounded-lg mb-3 inline-block shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+                        RADAR_FEED
+                    </span>
+                    <h2 className="text-2xl md:text-3xl font-black text-black mt-2">Antarctic Radar</h2>
+                    <p className="text-sm md:text-base text-slate-500 max-w-xl mx-auto mt-3 font-medium">
+                        Live satellite downlink tracking penguin movements in sectors A-9 through D-4.
+                        Updated every 256 clock cycles.
                     </p>
                 </div>
 
-                {/* Map Placeholder */}
-                <div className="relative w-full h-[600px] rounded-3xl overflow-hidden bg-[#E2E8F0] border-4 border-white shadow-2xl">
-                    {/* Simulated Map Background */}
-                    <div className="absolute inset-0 bg-[#cbd5e1] opacity-50">
-                        <div className="absolute inset-0 bg-[url('https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg')] bg-cover bg-center opacity-20 mix-blend-overlay"></div>
+                {/* Map Container */}
+                <div className="relative w-full h-[350px] md:h-[450px] bg-sky-100 rounded-[2rem] border-[6px] border-black shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
+                    {/* Simulated Pixel Grid */}
+                    <div className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:20px_20px]" />
+
+                    {/* Simulated Map Landmasses (Pixelated) */}
+                    <div className="absolute top-1/4 left-1/4 w-24 h-24 bg-white rounded-lg border-[3px] border-black group cursor-pointer hover:scale-110 transition-transform">
+                        <div className="absolute inset-0 flex items-center justify-center font-pixel text-[6px] text-slate-300">ICE_01</div>
+                    </div>
+                    <div className="absolute bottom-1/3 right-1/4 w-40 h-20 bg-white rounded-lg border-[3px] border-black group cursor-pointer hover:scale-110 transition-transform">
+                        <div className="absolute inset-0 flex items-center justify-center font-pixel text-[6px] text-slate-300">MAINLAND</div>
                     </div>
 
-                    {/* Markers */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-12 -translate-y-24 group cursor-pointer">
-                        <div className="relative">
-                            <div className="w-4 h-4 bg-glacier-blue rounded-full animate-ping absolute inset-0"></div>
-                            <div className="w-4 h-4 bg-glacier-blue rounded-full border-2 border-white relative z-10"></div>
+                    {/* Radar Markers */}
+                    {[
+                        { top: '30%', left: '40%', label: 'ADÉLIE_COLONY', color: 'bg-primary' },
+                        { top: '60%', left: '70%', label: 'GENTOO_SITE', color: 'bg-accent' },
+                        { top: '45%', left: '55%', label: 'E_KING_TRACKING', color: 'bg-red-400' }
+                    ].map((marker, i) => (
+                        <div
+                            key={i}
+                            className="absolute group cursor-pointer"
+                            style={{ top: marker.top, left: marker.left }}
+                        >
+                            <div className="relative">
+                                <div className={`w-6 h-6 ${marker.color} border-[3px] border-black rounded-lg animate-pulse relative z-10 flex items-center justify-center`}>
+                                    <div className="w-1 h-1 bg-white rounded-full" />
+                                </div>
+                                <div className={`absolute inset-[-3px] ${marker.color} opacity-40 blur-md animate-ping`} />
+                            </div>
+
+                            {/* Marker Info Popup */}
+                            <div className="absolute top-10 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all scale-90 group-hover:scale-100 pointer-events-none">
+                                <div className="bg-black text-white px-3 py-1.5 rounded-xl text-[7px] font-pixel whitespace-nowrap shadow-[3px_3px_0px_0px_rgba(0,0,0,0.3)]">
+                                    {marker.label}
+                                </div>
+                            </div>
                         </div>
-                        <div className="absolute top-6 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur px-3 py-1 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                            <p className="text-xs font-bold text-ocean-blue">Colony Alpha</p>
-                        </div>
+                    ))}
+
+                    {/* Radar Sweep Effect */}
+                    <div className="absolute inset-0 pointer-events-none">
+                        <div className="w-full h-1 bg-primary/20 absolute animate-[radar-sweep_4s_linear_infinite]" />
                     </div>
 
-                    <div className="absolute top-2/3 left-1/3 group cursor-pointer">
-                        <div className="relative">
-                            <div className="w-4 h-4 bg-glacier-blue rounded-full animate-ping absolute inset-0 animation-delay-500"></div>
-                            <div className="w-4 h-4 bg-glacier-blue rounded-full border-2 border-white relative z-10"></div>
-                        </div>
-                        <div className="absolute top-6 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur px-3 py-1 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                            <p className="text-xs font-bold text-ocean-blue">Specimen #892</p>
-                        </div>
-                    </div>
-
-                    {/* Map Controls Overlay */}
-                    <div className="absolute bottom-6 left-6 flex flex-col gap-2">
-                        <button className="w-10 h-10 bg-white rounded-lg shadow-lg flex items-center justify-center text-ocean-blue hover:bg-gray-50 transition-colors">+</button>
-                        <button className="w-10 h-10 bg-white rounded-lg shadow-lg flex items-center justify-center text-ocean-blue hover:bg-gray-50 transition-colors">-</button>
+                    {/* Controls */}
+                    <div className="absolute bottom-6 right-6 flex flex-col gap-2">
+                        <button className="w-10 h-10 bg-white border-[3px] border-black rounded-xl flex items-center justify-center font-black text-lg hover:bg-primary transition-colors active:translate-y-0.5 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">+</button>
+                        <button className="w-10 h-10 bg-white border-[3px] border-black rounded-xl flex items-center justify-center font-black text-lg hover:bg-primary transition-colors active:translate-y-0.5 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">-</button>
                     </div>
                 </div>
             </div>
+
+            <style>{`
+                @keyframes radar-sweep {
+                    0% { top: 0; }
+                    100% { top: 100%; }
+                }
+            `}</style>
         </section>
     );
 };
