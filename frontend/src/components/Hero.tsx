@@ -45,7 +45,7 @@ export const Hero = () => {
                         EXISTENTIAL_FEED_V2.6
                     </div>
 
-                    <h1 className="text-3xl md:text-5xl font-black text-black leading-[1.1] mb-6">
+                    <h1 className="text-3xl md:text-5qxl font-black text-black leading-[1.1] mb-6">
                         Walking <span className="text-ice-blue">Towards</span> <br className="hidden md:block" />
                         The <br className="hidden md:block" />
                         <span className="relative">
